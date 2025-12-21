@@ -3,39 +3,1123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tan's Portfolio</title>
+    <title>Tan Chau - Mechanical Engineer & Fabrication Specialist</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --bg-hover: #252525;
+            --accent: #00d4ff;
+            --accent-hover: #00b8e6;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border: #333333;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section spacing */
+        section {
+            padding: 5rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-pic-placeholder {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, #0066ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--bg-dark);
+            font-weight: 700;
+            margin-left: auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent) 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .highlight-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            background: var(--bg-hover);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
             line-height: 1.6;
         }
-        h1 { color: #333; }
-        .section { margin: 30px 0; }
+
+        .project-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            max-width: 800px;
+            margin: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .experience-item h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .role {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            color: var(--text-secondary);
+        }
+
+        .experience-item li:before {
+            content: "▹ ";
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer .social-links {
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: var(--bg-dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-pic-placeholder {
+                width: 200px;
+                height: 200px;
+                font-size: 3rem;
+                margin: 0 auto;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                min-height: auto;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Tan - Mechanical Engineer & Fabrication Specialist</h1>
-    
-    <div class="section">
-        <h2>About Me</h2>
-        <p>Makerspace Associate at Mason Innovation Exchange (MIX) Fabrication Lab, specializing in CNC routing, laser cutting, and 3D printing.</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">TC</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Mechanical Design + Prototyping Engineer</h1>
+                    <p class="subtitle">CAD, CNC Machining & Rapid Prototyping</p>
+                    <p class="description">
+                        I design and build real hardware: CAD modeling, CNC machining, 3D printing, and electronics prototyping. 
+                        I turn rough ideas into functional prototypes with clean documentation and repeatable fabrication workflows.
+                    </p>
+                    <div class="btn-group">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#" class="btn btn-secondary" onclick="alert('Resume download coming soon!')">Download Resume</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/TanKgVn" target="_blank" title="GitHub">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/minhtan-chau/" target="_blank" title="LinkedIn">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@TenGineerin9" target="_blank" title="YouTube">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        </a>
+                        <a href="mailto:minten2806@gmail.com" title="Email">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-pic-placeholder">
+                    <!-- Replace this with your actual profile picture -->
+                    TC
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p class="about-text">
+                    I am Tan Chau, a Mechanical Engineering graduate from George Mason University (GPA: 3.4) with an aerospace 
+                    concentration. I enjoy hands-on engineering where design meets fabrication. Currently working as a Makerspace 
+                    Associate at the Mason Innovation Exchange (MIX) Fabrication Lab since September 2024, I have extensive experience 
+                    taking projects from CAD to manufacturing using CNC machining, laser cutting, and 3D printing. I also have a background 
+                    in community college engineering from Northern Virginia Community College (GPA: 3.8). I often integrate electronics and 
+                    IoT when projects need sensing or control, and I'm passionate about teaching others through workshops and documentation.
+                </p>
+                <div class="highlights">
+                    <div class="highlight-item">
+                        <h3>Design to Build</h3>
+                        <p>Strong at turning unclear requirements into buildable designs with proper documentation</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>Precision Work</h3>
+                        <p>Detail-oriented CAD, tolerances, and manufacturing constraints for quality results</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>Hands-On</h3>
+                        <p>Comfortable in the shop: setup, fixturing, tooling, and iteration</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h3>Knowledge Transfer</h3>
+                        <p>Documenting processes so others can reproduce results and learn effectively</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>CAD & Design</h3>
+                    <ul>
+                        <li>SolidWorks</li>
+                        <li>Fusion 360</li>
+                        <li>Autodesk Inventor</li>
+                        <li>Assemblies & Technical Drawings</li>
+                        <li>Design for Manufacturing</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Fabrication & CAM</h3>
+                    <ul>
+                        <li>CNC Machining (VCarve Pro, Mach4)</li>
+                        <li>Laser Cutting/Engraving (LightBurn)</li>
+                        <li>FDM 3D Printing (Bambu Studio)</li>
+                        <li>Feeds/Speeds Optimization</li>
+                        <li>Toolpath Planning</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Mechatronics & IoT</h3>
+                    <ul>
+                        <li>Arduino & ESP32</li>
+                        <li>Sensor Integration</li>
+                        <li>Motor & Pump Control</li>
+                        <li>Circuit Prototyping</li>
+                        <li>Embedded Systems</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Software & Tools</h3>
+                    <ul>
+                        <li>VS Code & PlatformIO</li>
+                        <li>Git Version Control</li>
+                        <li>Web Development (HTML/CSS/JS)</li>
+                        <li>Technical Documentation</li>
+                        <li>Workshop Safety Protocols</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: GMU CES Terrain Display -->
+                <div class="project-card" onclick="openModal('project1')">
+                    <div class="project-image">[Add 6ft x 6ft terrain display image here]</div>
+                    <div class="project-content">
+                        <h3>GMU CES Terrain & City Display</h3>
+                        <div class="project-tags">
+                            <span class="tag">CNC Machining</span>
+                            <span class="tag">CAD/CAM</span>
+                            <span class="tag">Large Format</span>
+                        </div>
+                        <p class="project-description">
+                            Large-scale 6ft x 6ft CNC-machined terrain panels with 3D-printed buildings and mapped layout for GMU's CES booth display.
+                        </p>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); openModal('project1')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: ESP32 Weather Display -->
+                <div class="project-card" onclick="openModal('project2')">
+                    <div class="project-image">[Add e-paper weather display image here]</div>
+                    <div class="project-content">
+                        <h3>E-Paper Weather Display</h3>
+                        <div class="project-tags">
+                            <span class="tag">ESP32</span>
+                            <span class="tag">IoT</span>
+                            <span class="tag">PlatformIO</span>
+                        </div>
+                        <p class="project-description">
+                            7.5" Waveshare e-paper screen with ESP32, displaying live weather data. Solved V2 hardware ghosting issues through iterative debugging.
+                        </p>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); openModal('project2')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: CNC Feeds & Speeds Calculator -->
+                <div class="project-card" onclick="openModal('project3')">
+                    <div class="project-image">[Add calculator app screenshot here]</div>
+                    <div class="project-content">
+                        <h3>CNC Feeds & Speeds Calculator</h3>
+                        <div class="project-tags">
+                            <span class="tag">Web App</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Education</span>
+                        </div>
+                        <p class="project-description">
+                            Comprehensive calculator featuring Whiteside router bits and conservative safety settings for educational workshop use at the MIX.
+                        </p>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); openModal('project3')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Cherry Wood Cutting Boards -->
+                <div class="project-card" onclick="openModal('project4')">
+                    <div class="project-image">[Add cutting board image here]</div>
+                    <div class="project-content">
+                        <h3>CNC Woodworking Projects</h3>
+                        <div class="project-tags">
+                            <span class="tag">CNC</span>
+                            <span class="tag">Woodworking</span>
+                            <span class="tag">Finishing</span>
+                        </div>
+                        <p class="project-description">
+                            Custom cutting boards and bottle openers made from cherry wood with walnut inlay, exploring various finishing techniques.
+                        </p>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); openModal('project4')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Unit Conversion App -->
+                <div class="project-card" onclick="openModal('project5')">
+                    <div class="project-image">[Add unit converter screenshot here]</div>
+                    <div class="project-content">
+                        <h3>Machining Unit Converter</h3>
+                        <div class="project-tags">
+                            <span class="tag">Web App</span>
+                            <span class="tag">Workflow Tool</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <p class="project-description">
+                            Minimal unit conversion app for machining workflow with metric-imperial conversions and fraction support.
+                        </p>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); openModal('project5')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Portfolio Website -->
+                <div class="project-card" onclick="openModal('project6')">
+                    <div class="project-image">[Add portfolio screenshot here]</div>
+                    <div class="project-content">
+                        <h3>Personal Portfolio Website</h3>
+                        <div class="project-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">GitHub Pages</span>
+                            <span class="tag">HTML/CSS/JS</span>
+                        </div>
+                        <p class="project-description">
+                            Professional portfolio website showcasing projects and skills, hosted on GitHub Pages with custom domain integration.
+                        </p>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary btn-small" onclick="event.stopPropagation(); openModal('project6')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Mason Innovation Exchange (MIX) Fabrication Lab</h3>
+                <div class="role">Makerspace Associate</div>
+                <div class="date">Current Position</div>
+                <ul>
+                    <li>Support students and faculty with CNC routing, laser cutting, and 3D printing workflows</li>
+                    <li>Teach workshops on digital fabrication tools and manufacturing processes</li>
+                    <li>Troubleshoot design and fabrication issues, providing technical guidance</li>
+                    <li>Develop and maintain safety protocols and training documentation</li>
+                    <li>Create educational resources including feeds/speeds calculators and workflow guides</li>
+                    <li>Manage equipment maintenance and optimize fabrication processes</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>George Mason University</h3>
+                <div class="role">B.S. Mechanical Engineering (Aerospace Concentration)</div>
+                <div class="date">Graduate</div>
+                <ul>
+                    <li>Focused on hands-on engineering and rapid prototyping</li>
+                    <li>Gained experience in robotics, mechatronics, and embedded systems</li>
+                    <li>Developed strong foundation in CAD/CAM and manufacturing processes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Let's Build Something</h2>
+                <p class="description">
+                    If you need CAD modeling, prototyping support, or fabrication planning, send me a message. 
+                    I reply quickly and communicate clearly.
+                </p>
+                
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="mailto:minten2806@gmail.com" class="btn btn-primary">Email Me</a>
+                    <button class="btn btn-secondary" onclick="copyEmail()">Copy Email</button>
+                </div>
+
+                <div class="contact-form">
+                    <form onsubmit="event.preventDefault(); alert('Form submission will be implemented with backend!');">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-type">Project Type</label>
+                            <select id="project-type">
+                                <option>CAD Modeling</option>
+                                <option>CNC / Manufacturing Planning</option>
+                                <option>3D Printing</option>
+                                <option>Prototyping + Electronics</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/TanKgVn" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/minhtan-chau/" target="_blank">LinkedIn</a>
+            <a href="https://www.youtube.com/@TenGineerin9" target="_blank">YouTube</a>
+            <a href="mailto:minten2806@gmail.com">Email</a>
+        </div>
+        <p>Fairfax, Virginia, USA</p>
+        <p>Built with GitHub Pages © 2024 Tan Chau</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Project Modals -->
+    <div class="modal" id="project1">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project1')">×</button>
+            <div class="modal-header">
+                <h2>GMU CES Terrain & City Display</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Problem</h3>
+                <p>George Mason University needed an impressive 6ft x 6ft terrain and city display for their CES booth to showcase campus planning and development.</p>
+                
+                <h3>Solution</h3>
+                <p>Designed and fabricated large-format CNC-machined terrain panels with integrated 3D-printed buildings. Developed efficient workflow for material handling and multi-stage machining process.</p>
+                
+                <h3>Build Process</h3>
+                <p>[Add detailed build process here - toolpath planning, material selection, fixturing solutions, assembly methods]</p>
+                
+                <h3>Results</h3>
+                <p>Successfully delivered high-quality display on schedule. Developed repeatable process for large-format CNC projects.</p>
+                
+                <h3>What I Learned</h3>
+                <p>[Add key learnings - large format challenges, workflow optimization, project management]</p>
+            </div>
+        </div>
     </div>
-    
-    <div class="section">
-        <h2>Skills</h2>
-        <ul>
-            <li>CAD/CAM: Fusion 360, SolidWorks, VCarve Pro</li>
-            <li>Fabrication: CNC Routing, Laser Cutting, 3D Printing</li>
-            <li>Programming: Arduino, ESP32, Web Development</li>
-        </ul>
+
+    <div class="modal" id="project2">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project2')">×</button>
+            <div class="modal-header">
+                <h2>E-Paper Weather Display</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Problem</h3>
+                <p>Wanted to create a low-power weather display using e-paper technology with ESP32 microcontroller.</p>
+                
+                <h3>Constraints</h3>
+                <p>V2 Waveshare display had persistent ghosting issues not documented in standard guides.</p>
+                
+                <h3>Solution</h3>
+                <p>Developed custom code in VS Code with PlatformIO, implemented hardware-specific initialization sequences to eliminate ghosting on V2 displays.</p>
+                
+                <h3>Build Process</h3>
+                <p>[Add detailed build - circuit design, code development, debugging process, power optimization]</p>
+                
+                <h3>Results</h3>
+                <p>Fully functional weather display with crisp, ghost-free updates. Documented V2-specific fixes for community.</p>
+                
+                <h3>What I Learned</h3>
+                <p>Hardware version differences matter. Importance of thorough documentation and systematic debugging.</p>
+            </div>
+        </div>
     </div>
-    
-    <div class="section">
-        <h2>Featured Projects</h2>
-        <p>Coming soon...</p>
+
+    <div class="modal" id="project3">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project3')">×</button>
+            <div class="modal-header">
+                <h2>CNC Feeds & Speeds Calculator</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Problem</h3>
+                <p>Students needed a reliable way to calculate safe CNC parameters for educational workshops.</p>
+                
+                <h3>Solution</h3>
+                <p>Built comprehensive web-based calculator featuring Whiteside router bits with conservative safety settings optimized for student use.</p>
+                
+                <h3>Features</h3>
+                <p>[Add features - material database, bit selection, safety factors, printable reference sheets]</p>
+                
+                <h3>Results</h3>
+                <p>Reduced setup errors and improved workshop safety. Now used as standard reference at MIX.</p>
+                
+                <h3>What I Learned</h3>
+                <p>Importance of user-centered design in educational tools. Value of comprehensive testing with actual users.</p>
+            </div>
+        </div>
     </div>
+
+    <div class="modal" id="project4">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project4')">×</button>
+            <div class="modal-header">
+                <h2>CNC Woodworking Projects</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Problem</h3>
+                <p>Exploring decorative CNC woodworking with cherry and walnut to develop finishing expertise.</p>
+                
+                <h3>Projects</h3>
+                <p>Custom cutting boards and bottle openers featuring cherry wood with walnut inlay designs.</p>
+                
+                <h3>Build Process</h3>
+                <p>[Add details - wood selection, machining parameters for hardwoods, inlay techniques, finishing methods tested]</p>
+                
+                <h3>Results</h3>
+                <p>High-quality finished pieces. Developed reliable process for hardwood CNC work.</p>
+                
+                <h3>What I Learned</h3>
+                <p>Finishing technique selection impacts final quality significantly. Importance of grain direction in toolpath planning.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="project5">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project5')">×</button>
+            <div class="modal-header">
+                <h2>Machining Unit Converter</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Problem</h3>
+                <p>Needed quick, reliable unit conversions during machining work without cluttered interfaces.</p>
+                
+                <h3>Solution</h3>
+                <p>Built minimal web app with metric-imperial conversions and fraction support specifically for shop workflow.</p>
+                
+                <h3>Features</h3>
+                <p>[Add features - common machining units, fraction calculator, offline capability, mobile-friendly]</p>
+                
+                <h3>Results</h3>
+                <p>Streamlined daily workflow. Simple tool that does one thing well.</p>
+                
+                <h3>What I Learned</h3>
+                <p>Minimal design can be more effective than feature-rich alternatives for specific use cases.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="project6">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project6')">×</button>
+            <div class="modal-header">
+                <h2>Personal Portfolio Website</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Problem</h3>
+                <p>Needed professional online presence to showcase engineering projects and technical skills.</p>
+                
+                <h3>Solution</h3>
+                <p>Built responsive portfolio website using GitHub Pages with modern black theme and interactive project showcases.</p>
+                
+                <h3>Features</h3>
+                <p>Smooth scrolling navigation, project modals, responsive design, social media integration, contact form.</p>
+                
+                <h3>Technical Details</h3>
+                <p>Pure HTML/CSS/JavaScript, no frameworks. Optimized for performance and accessibility.</p>
+                
+                <h3>Results</h3>
+                <p>Professional portfolio accessible at custom domain, showcasing both technical skills and completed projects.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(projectId) {
+            document.getElementById(projectId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(projectId) {
+            document.getElementById(projectId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Copy email function
+        function copyEmail() {
+            navigator.clipboard.writeText('minten2806@gmail.com');
+            alert('Email copied to clipboard!');
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
