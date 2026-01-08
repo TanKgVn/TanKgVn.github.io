@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Tan Chau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #050508;
+            --bg-secondary: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-cyan: #00d4ff;
+            --accent-blue: #0066ff;
+            --accent-purple: #7c3aed;
+            --text-primary: #ffffff;
+            --text-secondary: #8a8a9a;
+            --text-muted: #5a5a6a;
+            --gradient-main: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c3aed 100%);
+            --gradient-hover: linear-gradient(135deg, #00e5ff 0%, #0077ff 50%, #8b4bff 100%);
+            --gradient-subtle: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(0,102,255,0.1) 50%, rgba(124,58,237,0.1) 100%);
+            --glow-cyan: 0 0 40px rgba(0, 212, 255, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-gradient-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-primary);
+            overflow: hidden;
+        }
+
+        .bg-gradient-animated::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 80%, rgba(0, 102, 255, 0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 40% 60%, rgba(124, 58, 237, 0.04) 0%, transparent 50%);
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(2%, 1%) scale(1.02); }
+            66% { transform: translate(-1%, 2%) scale(0.98); }
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.25rem 3rem;
+            z-index: 1000;
+            background: rgba(5, 5, 8, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 3rem;
+            background: rgba(5, 5, 8, 0.95);
+        }
+
+        nav .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        nav a.active {
+            color: var(--accent-cyan);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 10rem 3rem 3rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-header p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out 0.1s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 2rem 3rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.15s; }
+        .project-card:nth-child(3) { animation-delay: 0.2s; }
+        .project-card:nth-child(4) { animation-delay: 0.25s; }
+        .project-card:nth-child(5) { animation-delay: 0.3s; }
+        .project-card:nth-child(6) { animation-delay: 0.35s; }
+
+        .project-card:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-image .placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .project-content {
+            padding: 1.75rem;
+        }
+
+        .project-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-content h3 {
+            color: var(--accent-cyan);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.35rem 0.85rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 50px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-small {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-small.primary {
+            background: var(--gradient-main);
+            color: var(--bg-primary);
+            border: none;
+        }
+
+        .btn-small.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-small.secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-small.secondary:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-small svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: modalIn 0.3s ease-out;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+
+        .modal-header {
+            padding: 2.5rem 2.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .modal-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            padding-right: 3rem;
+        }
+
+        .modal-body {
+            padding: 2rem 2.5rem 2.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .modal-body h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        .modal-body a:hover {
+            text-decoration: underline;
+        }
+
+        .modal-body .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+
+        .modal-body .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* Page Navigation */
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 4rem;
+            padding: 0 3rem;
+        }
+
+        .btn {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: var(--bg-primary);
+            border: none;
+            box-shadow: var(--glow-cyan), 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-cyan), 0 8px 25px rgba(0, 102, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-primary), var(--bg-primary)), var(--gradient-main);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        .btn-secondary:hover {
+            background-image: linear-gradient(var(--bg-card), var(--bg-card)), var(--gradient-main);
+            transform: translateY(-3px);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(5, 5, 8, 0.98);
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-header {
+                padding: 8rem 1.5rem 2rem;
+            }
+
+            .projects-section {
+                padding: 2rem 1.5rem 4rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal.active {
+                padding: 1rem;
+            }
+
+            .modal-header {
+                padding: 2rem 1.5rem 1rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .page-nav {
+                flex-direction: column;
+                padding: 0 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient-animated"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">TC</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Featured Projects</h1>
+        <p>A selection of work showcasing CAD, fabrication, and electronics</p>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="projects-grid">
+            <!-- Project 1: GMU CES Booth Display -->
+            <div class="project-card" onclick="openModal('project1')">
+                <div class="project-image">
+                    <span class="placeholder">Coming Soon</span>
+                </div>
+                <div class="project-content">
+                    <h3>GMU CES Booth Display</h3>
+                    <div class="project-tags">
+                        <span class="tag">CNC Machining</span>
+                        <span class="tag">CAD/CAM</span>
+                        <span class="tag">Large Format</span>
+                    </div>
+                    <p class="project-description">
+                        6ft x 6ft CNC-machined terrain panels with 3D-printed buildings for GMU's CES booth showcasing Northern Virginia tech ecosystem.
+                    </p>
+                    <div class="project-links">
+                        <button class="btn-small primary" onclick="event.stopPropagation(); openModal('project1')">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: E-Paper Weather Display -->
+            <div class="project-card" onclick="openModal('project2')">
+                <div class="project-image">
+                    <img src="Images/weather-display.jpg" alt="E-Paper Weather Display">
+                </div>
+                <div class="project-content">
+                    <h3>E-Paper Weather Display</h3>
+                    <div class="project-tags">
+                        <span class="tag">ESP32</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">PlatformIO</span>
+                    </div>
+                    <p class="project-description">
+                        7.5" Waveshare e-paper screen with ESP32, displaying live weather data. Solved V2 hardware ghosting issues.
+                    </p>
+                    <div class="project-links">
+                        <button class="btn-small primary" onclick="event.stopPropagation(); openModal('project2')">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Custom CNC Bottle Opener -->
+            <div class="project-card" onclick="openModal('project3')">
+                <div class="project-image">
+                    <img src="Images/bottle-opener.jpg" alt="Custom CNC Bottle Opener">
+                </div>
+                <div class="project-content">
+                    <h3>Custom CNC Bottle Opener</h3>
+                    <div class="project-tags">
+                        <span class="tag">CNC</span>
+                        <span class="tag">Woodworking</span>
+                        <span class="tag">Product Design</span>
+                    </div>
+                    <p class="project-description">
+                        Custom-designed bottle opener from cherry wood with walnut inlay, showcasing precision CNC machining.
+                    </p>
+                    <div class="project-links">
+                        <button class="btn-small primary" onclick="event.stopPropagation(); openModal('project3')">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Soft Robotic End-Effector -->
+            <div class="project-card" onclick="openModal('project4')">
+                <div class="project-image">
+                    <img src="Images/soft-gripper.jpg" alt="Soft Robotic End-Effector">
+                </div>
+                <div class="project-content">
+                    <h3>Soft Robotic End-Effector</h3>
+                    <div class="project-tags">
+                        <span class="tag">Robotics</span>
+                        <span class="tag">Pneumatics</span>
+                        <span class="tag">Silicone Casting</span>
+                    </div>
+                    <p class="project-description">
+                        International collaboration designing a soft gripper for medical and agricultural applications.
+                    </p>
+                    <div class="project-links">
+                        <button class="btn-small primary" onclick="event.stopPropagation(); openModal('project4')">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Rosie Wildlife Tracker -->
+            <div class="project-card" onclick="openModal('project5')">
+                <div class="project-image">
+                    <img src="Images/rosie-tracker.jpg" alt="Rosie Wildlife Tracker">
+                </div>
+                <div class="project-content">
+                    <h3>Rosie Wildlife Tracker 🏆</h3>
+                    <div class="project-tags">
+                        <span class="tag">ESP32</span>
+                        <span class="tag">GPS</span>
+                        <span class="tag">IoT</span>
+                    </div>
+                    <p class="project-description">
+                        3rd Place at GMU Hackfax 2025. Compact wildlife tracking device with GPS and heart rate monitoring.
+                    </p>
+                    <div class="project-links">
+                        <button class="btn-small primary" onclick="event.stopPropagation(); openModal('project5')">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                        <a href="https://github.com/2186/rosie-tracker" target="_blank" class="btn-small secondary" onclick="event.stopPropagation()">
+                            GitHub
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Green Heart Monitor -->
+            <div class="project-card" onclick="openModal('project6')">
+                <div class="project-image">
+                    <img src="Images/green-heart.jpg" alt="Green Heart Monitor">
+                </div>
+                <div class="project-content">
+                    <h3>Green Heart Monitor 💚🏆</h3>
+                    <div class="project-tags">
+                        <span class="tag">Arduino</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">Web Dashboard</span>
+                    </div>
+                    <p class="project-description">
+                        Winner of GMU HackOverflow 2025 Beginner's Track. Portable IoT device for environmental and health monitoring.
+                    </p>
+                    <div class="project-links">
+                        <button class="btn-small primary" onclick="event.stopPropagation(); openModal('project6')">
+                            Learn More
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                        <a href="https://github.com/tchau23/Green-Heart" target="_blank" class="btn-small secondary" onclick="event.stopPropagation()">
+                            GitHub
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="page-nav">
+            <a href="experience.html" class="btn btn-primary">
+                View Experience
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="contact.html" class="btn btn-secondary">
+                Get In Touch
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Project 1 Modal -->
+    <div class="modal" id="project1">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project1')">×</button>
+            <div class="modal-header">
+                <h2>GMU CES Booth Display - Techpopia Northern Virginia Map</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p><strong>Timeline:</strong> August 2025 – Present<br>
+                <strong>Role:</strong> Design + Fabrication Lead<br>
+                <strong>Location:</strong> George Mason University</p>
+                
+                <h3>Problem</h3>
+                <p>George Mason University needed a 6'×6' interactive display featuring a topographical terrain map of Northern Virginia for their Consumer Electronics Show (CES) booth.</p>
+                
+                <h3>Design & Fabrication</h3>
+                <p><strong>Terrain Base:</strong> Executed precision CNC routing of the terrain base and managed the 3D printing and detailing of 40+ scaled tech company building models.</p>
+                <p><strong>Custom Elements:</strong> Managed integration of custom model train tracks and scenic elements to showcase GMU as the central tech innovation hub.</p>
+                
+                <h3>Technical Challenges</h3>
+                <ul>
+                    <li>Large-format CNC machining requiring precise material handling</li>
+                    <li>Managing 40+ individual 3D printed building models</li>
+                    <li>Integration of multiple fabrication techniques</li>
+                    <li>Coordinating logistics and timeline for trade show deadline</li>
+                </ul>
+                
+                <h3>What I Learned</h3>
+                <p>Project management at scale, coordinating multiple fabrication processes, and working under trade show deadlines.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 2 Modal -->
+    <div class="modal" id="project2">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project2')">×</button>
+            <div class="modal-header">
+                <h2>E-Paper Weather Display</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Problem</h3>
+                <p>Wanted to create a low-power weather display using e-paper technology with ESP32 microcontroller.</p>
+                
+                <h3>Constraints</h3>
+                <p>V2 Waveshare display had persistent ghosting issues not documented in standard guides.</p>
+                
+                <h3>Solution</h3>
+                <p>Developed custom code in VS Code with PlatformIO, implemented hardware-specific initialization sequences to eliminate ghosting on V2 displays.</p>
+                
+                <h3>Results</h3>
+                <p>Fully functional weather display with crisp, ghost-free updates. Documented V2-specific fixes for the community.</p>
+                
+                <h3>What I Learned</h3>
+                <p>Hardware version differences matter. Importance of thorough documentation and systematic debugging.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 3 Modal -->
+    <div class="modal" id="project3">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project3')">×</button>
+            <div class="modal-header">
+                <h2>Custom CNC Bottle Opener</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p>Custom-designed bottle opener showcasing precision CNC woodworking with decorative inlay techniques.</p>
+                
+                <h3>Fabrication Process</h3>
+                <p><strong>Material Selection:</strong> Cherry wood for main body with walnut inlay for visual contrast and durability.</p>
+                <p><strong>CNC Machining:</strong> Precise toolpath planning for clean edges and smooth surfaces with careful attention to feeds and speeds.</p>
+                <p><strong>Inlay Technique:</strong> Routed pockets for walnut inlay pieces, ensuring tight fit and flush final surface.</p>
+                
+                <h3>Technical Challenges</h3>
+                <ul>
+                    <li>Optimizing toolpaths for hardwood without burning or tearout</li>
+                    <li>Achieving precise inlay pocket depths</li>
+                    <li>Selecting appropriate finish for durability and food safety</li>
+                </ul>
+                
+                <h3>What I Learned</h3>
+                <p>Hands-on experience with hardwood CNC parameters, inlay techniques, and finishing methods.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 4 Modal -->
+    <div class="modal" id="project4">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project4')">×</button>
+            <div class="modal-header">
+                <h2>Soft Robotic End-Effector – International Collaboration</h2>
+            </div>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p><strong>Timeline:</strong> April 2024 – May 2025 (Capstone Project)<br>
+                <strong>Team:</strong> International Collaboration | George Mason University</p>
+                
+                <h3>Demo Video</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/X1l3ojdAdEA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <h3>Design Goal</h3>
+                <p>Collaborated with an international team to design a soft gripper for gentle handling in medical and agricultural applications.</p>
+                
+                <h3>Development Process</h3>
+                <p><strong>Pneumatic System:</strong> Developed and tested a pneumatic actuation soft gripper using 3D-printed molds and silicone casting.</p>
+                <p><strong>Electronics Integration:</strong> Designed and integrated a compact electronics case onto a mobile robotic platform using VEX.</p>
+                
+                <h3>What I Learned</h3>
+                <p>Advanced manufacturing techniques in silicone casting, pneumatic system design, and international team collaboration.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 5 Modal -->
+    <div class="modal" id="project5">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project5')">×</button>
+            <div class="modal-header">
+                <h2>Rosie Wildlife Tracker</h2>
+            </div>
+            <div class="modal-body">
+                <h3>🏆 Award</h3>
+                <p><strong>3rd Place - GMU Hackfax 2025 "A Better World" Theme</strong></p>
+                
+                <h3>Project Overview</h3>
+                <p>Compact, non-invasive wildlife tracking device using ESP32 with accelerometer, pulse sensor, and GPS module. Monitors movement, location, and heart rate in real time.</p>
+                
+                <h3>Technical Implementation</h3>
+                <ul>
+                    <li>ESP32 microcontroller for data collection and wireless transmission</li>
+                    <li>GY-521 accelerometer/gyroscope for movement tracking</li>
+                    <li>Pulse sensor for heart rate and stress monitoring</li>
+                    <li>GPS module for real-time location tracking</li>
+                    <li>Compact design fitting in 100mm x 70mm enclosure</li>
+                </ul>
+                
+                <h3>Accomplishments</h3>
+                <ul>
+                    <li>Real-time GPS tracking for movement patterns</li>
+                    <li>Heartbeat monitoring for stress detection</li>
+                    <li>3D-printed, animal-mountable case</li>
+                    <li>Wireless data transmission via Oracle Cloud</li>
+                </ul>
+                
+                <p><strong>GitHub:</strong> <a href="https://github.com/2186/rosie-tracker" target="_blank">github.com/2186/rosie-tracker</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 6 Modal -->
+    <div class="modal" id="project6">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('project6')">×</button>
+            <div class="modal-header">
+                <h2>Green Heart Monitor 💚</h2>
+            </div>
+            <div class="modal-body">
+                <h3>🏆 Award</h3>
+                <p><strong>Winner - GMU HackOverflow 2025 Beginner's Track</strong></p>
+                
+                <h3>Overview</h3>
+                <p>Portable, battery-friendly device based on Arduino Nano ESP32 for real-time monitoring of environmental conditions and health metrics.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>⚙️ Multi-Sensor Integration: Water level, light, humidity, temperature, GPS, heartbeat</li>
+                    <li>🌐 Live Dashboard: HTTP server delivers live data to any browser</li>
+                    <li>📶 SoftAP Mode: ESP32 hosts its own network</li>
+                    <li>🖥️ OLED Display: Real-time visual feedback</li>
+                </ul>
+                
+                <h3>Future Work</h3>
+                <ul>
+                    <li>Cloud Integration with Firebase or AWS</li>
+                    <li>Solar charging for continuous field operation</li>
+                    <li>Machine learning for anomaly detection</li>
+                </ul>
+                
+                <p><strong>GitHub:</strong> <a href="https://github.com/tchau23/Green-Heart" target="_blank">github.com/tchau23/Green-Heart</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Modal functions
+        function openModal(projectId) {
+            document.getElementById(projectId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(projectId) {
+            document.getElementById(projectId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
