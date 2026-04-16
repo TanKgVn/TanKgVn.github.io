@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tan Chau - Mechanical Engineer & Fabrication Specialist</title>
+    <title>Tan Chau — Mechanical Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,100 +15,49 @@
         }
 
         :root {
-            --bg-primary: #050508;
-            --bg-secondary: #0a0a0f;
-            --bg-card: #12121a;
-            --accent-cyan: #00d4ff;
-            --accent-blue: #0066ff;
-            --accent-purple: #7c3aed;
-            --text-primary: #ffffff;
-            --text-secondary: #8a8a9a;
-            --text-muted: #5a5a6a;
-            --gradient-main: linear-gradient(135deg, #00d4ff 0%, #0066ff 50%, #7c3aed 100%);
-            --gradient-hover: linear-gradient(135deg, #00e5ff 0%, #0077ff 50%, #8b4bff 100%);
-            --gradient-subtle: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(0,102,255,0.1) 50%, rgba(124,58,237,0.1) 100%);
-            --glow-cyan: 0 0 40px rgba(0, 212, 255, 0.3);
-            --glow-blue: 0 0 60px rgba(0, 102, 255, 0.2);
+            --bg: #fdf8f4;
+            --bg-card: #ffffff;
+            --rose: #5b8fc9;
+            --rose-light: #d8eaf7;
+            --sage: #7a9e80;
+            --sage-light: #daeadc;
+            --lavender: #8f7db0;
+            --lavender-light: #e8e2f3;
+            --sand: #b8956a;
+            --sand-light: #f0e4d4;
+            --text: #2d2d2d;
+            --text-soft: #6b6b6b;
+            --text-muted: #a0a0a0;
+            --border: #ede8e3;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-gradient-animated {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: var(--bg-primary);
-            overflow: hidden;
-        }
-
-        .bg-gradient-animated::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 80%, rgba(0, 102, 255, 0.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 40% 60%, rgba(124, 58, 237, 0.04) 0%, transparent 50%);
-            animation: bgPulse 15s ease-in-out infinite;
-        }
-
-        @keyframes bgPulse {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(2%, 1%) scale(1.02); }
-            66% { transform: translate(-1%, 2%) scale(0.98); }
-        }
-
-        /* Grid overlay */
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
-        }
-
-        /* Navigation */
+        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
+            z-index: 100;
             padding: 1.25rem 3rem;
-            z-index: 1000;
-            background: rgba(5, 5, 8, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+            background: rgba(253, 248, 244, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            transition: padding 0.3s;
         }
 
-        nav.scrolled {
-            padding: 1rem 3rem;
-            background: rgba(5, 5, 8, 0.95);
-        }
+        nav.scrolled { padding: 0.9rem 3rem; }
 
-        nav .container {
-            max-width: 1400px;
+        .nav-inner {
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -116,635 +65,524 @@
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 800;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-            position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-main);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover::after {
-            transform: scaleX(1);
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.45rem;
+            color: var(--text);
+            text-decoration: none;
         }
 
         nav ul {
-            display: flex;
             list-style: none;
-            gap: 0.5rem;
+            display: flex;
+            gap: 0.25rem;
         }
 
         nav a {
-            color: var(--text-secondary);
             text-decoration: none;
-            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-soft);
             font-size: 0.9rem;
             font-weight: 500;
-            padding: 0.6rem 1.25rem;
+            padding: 0.5rem 1rem;
             border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: all 0.2s;
         }
 
-        nav a:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
+        nav a:hover { color: var(--text); background: var(--border); }
+        nav a.active { color: var(--rose); background: var(--rose-light); }
+
+        .mobile-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .mobile-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
         }
 
-        nav a.active {
-            color: var(--accent-cyan);
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        /* Hero Section */
+        /* ── HERO ── */
         .hero {
-            min-height: auto;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 8rem 3rem 2rem;
-            position: relative;
+            padding: 7rem 3rem 4rem;
         }
 
-        .hero .container {
-            max-width: 1400px;
+        .hero .inner {
+            max-width: 1100px;
             margin: 0 auto;
             width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 5rem;
+            align-items: center;
         }
 
-        .hero-content {
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--rose);
+            background: var(--rose-light);
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-bio {
+            font-size: 1.05rem;
+            color: var(--text-soft);
+            line-height: 1.85;
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-bio strong { color: var(--text); font-weight: 600; }
+
+        .btn-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.75rem 1.6rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary { background: var(--text); color: #fff; }
+        .btn-primary:hover { background: #444; transform: translateY(-2px); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1.5px solid var(--border);
+        }
+        .btn-outline:hover { border-color: var(--text); transform: translateY(-2px); }
+
+        .social-row { display: flex; gap: 0.6rem; }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1.5px solid var(--border);
+            color: var(--text-soft);
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .social-link:hover {
+            border-color: var(--rose);
+            color: var(--rose);
+            background: var(--rose-light);
+        }
+        .social-link svg { width: 18px; height: 18px; }
+
+        /* ── PROFILE PHOTO ── */
+        .hero-photo { display: flex; justify-content: center; align-items: center; }
+
+        .photo-frame {
+            position: relative;
+            width: 300px;
+            height: 360px;
+        }
+
+        .photo-blob {
+            position: absolute;
+            inset: -18px;
+            background: var(--rose-light);
+            border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+            z-index: 0;
+        }
+
+        .photo-dot {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .photo-dot.d1 { width: 72px; height: 72px; background: var(--sage-light); bottom: -22px; right: -22px; }
+        .photo-dot.d2 { width: 44px; height: 44px; background: var(--lavender-light); top: -12px; left: -18px; }
+
+        .photo-frame img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 22px;
+            z-index: 1;
+        }
+
+        /* ── SKILLS SECTION ── */
+        .section {
+            padding: 5rem 3rem;
+        }
+
+        .section .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-heading {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            color: var(--text);
+            letter-spacing: -0.3px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cards {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        }
+
+        .card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.1rem;
+            font-size: 1.2rem;
+        }
+
+        .card-icon.rose     { background: var(--rose-light); }
+        .card-icon.sage     { background: var(--sage-light); }
+        .card-icon.lavender { background: var(--lavender-light); }
+        .card-icon.sand     { background: var(--sand-light); }
+
+        .card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        /* ── BIO SECTION ── */
+        .bio-section {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .hero-text {
-            animation: fadeInUp 0.8s ease-out;
+        .bio-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.3px;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .bio-text p {
+            font-size: 0.97rem;
+            color: var(--text-soft);
+            line-height: 1.85;
+            margin-bottom: 1rem;
         }
 
-        h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
+        .bio-text p:last-child { margin-bottom: 0; }
+        .bio-text strong { color: var(--text); font-weight: 600; }
+        .bio-text a { color: var(--rose); text-decoration: none; font-weight: 500; }
+        .bio-text a:hover { text-decoration: underline; }
 
-        h1 .gradient-text {
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.35rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-            animation: fadeInUp 0.8s ease-out 0.3s backwards;
-        }
-
-        .description {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            max-width: 540px;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
-        }
-
-        /* Gradient Buttons */
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease-out 0.5s backwards;
-        }
-
-        .btn {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--gradient-main);
-            color: var(--bg-primary);
-            border: none;
-            box-shadow: var(--glow-cyan), 0 4px 15px rgba(0, 102, 255, 0.3);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-hover);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--glow-cyan), 0 8px 25px rgba(0, 102, 255, 0.4);
-        }
-
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid transparent;
-            background-image: linear-gradient(var(--bg-primary), var(--bg-primary)), var(--gradient-main);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-        }
-
-        .btn-secondary:hover {
-            background-image: linear-gradient(var(--bg-card), var(--bg-card)), var(--gradient-main);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
-        }
-
-        .btn-icon {
-            width: 18px;
-            height: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover .btn-icon {
-            transform: translateX(3px);
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
-        }
-
-        .social-link {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            color: var(--accent-cyan);
-            border-color: rgba(0, 212, 255, 0.3);
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
-        }
-
-        .social-link svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        /* Profile Image */
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInUp 0.8s ease-out 0.3s backwards;
-        }
-
-        .profile-container {
-            position: relative;
-            width: 380px;
-            height: 380px;
-        }
-
-        .profile-ring {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: 50%;
-            background: var(--gradient-main);
-            opacity: 0.6;
-            animation: rotate 8s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .profile-ring::before {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            right: 3px;
-            bottom: 3px;
-            background: var(--bg-primary);
-            border-radius: 50%;
-        }
-
-        .profile-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-            filter: blur(40px);
-            animation: glowPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        .profile-image {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--bg-primary);
-            z-index: 1;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Stats Section */
-        .stats-bar {
-            padding: 2rem 3rem;
-            margin-top: 2rem;
-        }
-
-        .stats-bar .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .stats-grid {
+        .bio-stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            padding: 2rem;
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            position: relative;
+        .stat-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.4rem 1.25rem;
         }
 
-        .stat-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 20%;
-            height: 60%;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
-        }
-
-        .stat-number {
-            font-family: 'Syne', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .stat-card .num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--text);
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
-        .stat-label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .stat-card .lbl {
+            font-size: 0.82rem;
+            color: var(--text-soft);
+            font-weight: 500;
         }
 
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
+        /* ── FOOTER ── */
+        footer {
+            padding: 2rem 3rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.83rem;
+            border-top: 1px solid var(--border);
         }
 
-        .mobile-menu-btn span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text-primary);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Responsive */
+        /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .hero-content {
+            .cards { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 860px) {
+            .hero .inner {
                 grid-template-columns: 1fr;
+                gap: 3rem;
                 text-align: center;
             }
-
-            .hero-text {
-                order: 2;
-            }
-
-            .hero-image {
-                order: 1;
-            }
-
-            .profile-container {
-                width: 280px;
-                height: 280px;
-            }
-
-            .description {
-                max-width: 100%;
-            }
-
-            .btn-group {
-                justify-content: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat-item:nth-child(2)::after {
-                display: none;
-            }
+            .hero-photo { order: -1; }
+            .hero-bio { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .btn-row { justify-content: center; }
+            .social-row { justify-content: center; }
+            .photo-frame { width: 220px; height: 260px; }
+            .bio-grid { grid-template-columns: 1fr; gap: 2.5rem; }
         }
 
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            nav ul.active {
+        @media (max-width: 600px) {
+            nav { padding: 1rem 1.5rem; }
+            nav ul { display: none; }
+            nav ul.open {
                 display: flex;
                 flex-direction: column;
                 position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(5, 5, 8, 0.98);
-                padding: 1rem;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                top: 100%; left: 0; right: 0;
+                background: rgba(253,248,244,0.98);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 1.5rem;
+                gap: 0.25rem;
             }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding: 6rem 1.5rem 2rem;
-            }
-
-            .stats-bar {
-                position: relative;
-                bottom: auto;
-                padding: 2rem 1.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .scroll-indicator {
-                display: none;
-            }
+            .mobile-btn { display: flex; }
+            .hero { padding: 6rem 1.5rem 3rem; }
+            .section { padding: 3.5rem 1.5rem; }
+            .cards { grid-template-columns: 1fr; }
+            .bio-stats { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient-animated"></div>
-    <div class="grid-overlay"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">TC</a>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul id="navMenu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">Tan Chau</a>
+        <button class="mobile-btn" onclick="toggleNav()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul id="navList">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="inner">
+        <div class="hero-text">
+            <span class="hero-tag">Mechanical Engineer</span>
+            <h1>Design, Build,<br>Make it Work.</h1>
+            <p class="hero-bio">
+                <strong>GMU Mechanical Engineering grad</strong> with an aerospace concentration.
+                Currently at the <strong><a href="https://www.mix.gmu.edu/" target="_blank" style="color: inherit; text-decoration: underline; text-decoration-color: rgba(91,143,201,0.4); text-underline-offset: 2px;">Mason Innovation Exchange (MIX)</a></strong> — running the Fab Lab,
+                overseeing equipment, training staff and students, and handling operations
+                including staffing, events, and planning. I turn ideas into real things.
+            </p>
+            <div class="btn-row">
+                <a href="projects.html" class="btn btn-primary">
+                    View Projects
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+                <a href="Tan_Chau_Resume.pdf" download class="btn btn-outline">
+                    Resume
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="social-row">
+                <a href="https://github.com/TanKgVn" target="_blank" class="social-link" title="GitHub">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/minhtan-chau/" target="_blank" class="social-link" title="LinkedIn">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@TenGineerin9" target="_blank" class="social-link" title="YouTube">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </a>
+                <a href="mailto:minten2806@gmail.com" class="social-link" title="Email">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
+                </a>
+            </div>
         </div>
-    </nav>
+        <div class="hero-photo">
+            <div class="photo-frame">
+                <div class="photo-blob"></div>
+                <div class="photo-dot d1"></div>
+                <div class="photo-dot d2"></div>
+                <img src="Images/profile-photo.jpg" alt="Tan Chau">
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>
-                        <span class="gradient-text">Mechanical Design</span><br>
-                        + Prototyping Engineer
-                    </h1>
-                    <p class="subtitle">CAD, CNC Machining & Rapid Prototyping</p>
-                    <p class="description">
-                        I design and build real hardware: CAD modeling, CNC machining, 3D printing, 
-                        and electronics prototyping. I turn rough ideas into functional prototypes 
-                        with clean documentation and repeatable fabrication workflows.
-                    </p>
-                    <div class="btn-group">
-                        <a href="projects.html" class="btn btn-primary">
-                            <span>View Projects</span>
-                            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="Tan_Chau_Resume.pdf" download class="btn btn-secondary">
-                            <span>Download Resume</span>
-                            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/TanKgVn" target="_blank" class="social-link" title="GitHub">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/minhtan-chau/" target="_blank" class="social-link" title="LinkedIn">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                        <a href="https://www.youtube.com/@TenGineerin9" target="_blank" class="social-link" title="YouTube">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                        </a>
-                        <a href="mailto:minten2806@gmail.com" class="social-link" title="Email">
-                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
-                        </a>
-                    </div>
+<!-- ── WHAT I DO ── -->
+<section class="section">
+    <div class="inner">
+        <p class="section-label">What I do</p>
+        <h2 class="section-heading">Skills & Focus Areas</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon rose">🛠️</div>
+                <h3>Fabrication & Machining</h3>
+                <p>CNC machining, laser cutting, 3D printing, woodworking, and metalworking. I run and maintain a full-service Fab Lab at the MIX.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon sage">📐</div>
+                <h3>CAD & Design</h3>
+                <p>Solid modeling, assemblies, and manufacturing-ready documentation. Fusion 360, SolidWorks, and more.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon lavender">⚡</div>
+                <h3>Electronics & Prototyping</h3>
+                <p>Arduino, Raspberry Pi, IoT sensors, and wiring. I integrate electronics when projects need sensing or control logic.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon sand">🗂️</div>
+                <h3>Lab Operations</h3>
+                <p>Staffing, scheduling, event planning, workshop instruction, and equipment maintenance across the MIX.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── BIO ── -->
+<section class="section bio-section">
+    <div class="inner">
+        <div class="bio-grid">
+            <div class="bio-text">
+                <h2>A bit about me</h2>
+                <p>
+                    I'm a <strong>Mechanical Engineering grad from George Mason University</strong> (aerospace concentration).
+                    I've always been drawn to the making side of engineering — not just designing things on a screen, but building them.
+                </p>
+                <p>
+                    At the <strong><a href="https://www.mix.gmu.edu/" target="_blank">MIX Fab Lab</a></strong>, I led the CES booth build from concept to construction,
+                    developed and taught workshops on specialized equipment, and keep all the machines running.
+                    Over time my role has grown to include lab operations — staffing, events, and planning —
+                    while staying hands-on with the equipment every day.
+                </p>
+                <p>
+                    Outside of work I document builds on <a href="https://www.youtube.com/@TenGineerin9" target="_blank">YouTube</a> and take on projects that push me to learn something new.
+                </p>
+            </div>
+            <div class="bio-stats">
+                <div class="stat-card">
+                    <div class="num">6+</div>
+                    <div class="lbl">Projects Built</div>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-container">
-                        <div class="profile-ring"></div>
-                        <div class="profile-glow"></div>
-                        <div class="profile-image">
-                            <img src="Images/profile-photo.jpg" alt="Tan Chau">
-                        </div>
-                    </div>
+                <div class="stat-card">
+                    <div class="num">2</div>
+                    <div class="lbl">Hackathon Wins</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">5+</div>
+                    <div class="lbl">CAD Platforms</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">2+</div>
+                    <div class="lbl">Years at MIX</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Stats Section -->
-    <section class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">6+</div>
-                    <div class="stat-label">Projects Built</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Hackathon Wins</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">CAD Platforms</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">2+</div>
-                    <div class="stat-label">Years Fab Lab</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>
+    <p>© 2025 Tan Chau · Built by hand</p>
+</footer>
 
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
-        }
-
-        // Close menu when clicking a link
-        document.querySelectorAll('#navMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navMenu').classList.remove('active');
-            });
-        });
-    </script>
+<script>
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function toggleNav() {
+        document.getElementById('navList').classList.toggle('open');
+    }
+    document.querySelectorAll('#navList a').forEach(a => {
+        a.addEventListener('click', () => document.getElementById('navList').classList.remove('open'));
+    });
+</script>
 </body>
 </html>
