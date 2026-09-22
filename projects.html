@@ -192,6 +192,12 @@
             overflow: hidden; border-radius: 10px; margin: 0.75rem 0;
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 10px; }
+        .video-container.vertical { position: relative; aspect-ratio: 9 / 16; height: auto; padding-bottom: 0; max-width: 320px; margin: 0.75rem auto; border-radius: 10px; overflow: hidden; }
+        .video-container.vertical iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .modal-img { width: 100%; border-radius: 10px; margin: 0.75rem 0 1rem; display: block; }
+        .modal-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.75rem 0 1rem; }
+        .modal-gallery img { width: 100%; height: auto; border-radius: 10px; display: block; }
 
         /* FOOTER */
         footer { padding: 2rem 3rem; text-align: center; color: var(--text-muted); font-size: 0.83rem; border-top: 1px solid var(--border); }
@@ -241,6 +247,23 @@
 
 <section class="projects-section">
     <div class="projects-grid">
+
+        <div class="project-card" onclick="openModal('project-cnc-enclosure')">
+            <div class="project-image"><img src="Images/cnc-enclosure3.jpg" alt="Genmitsu ProVerXL 3030-Max CNC Enclosure"></div>
+            <div class="project-content">
+                <h3>CNC Enclosure — Genmitsu ProVerXL 3030-Max</h3>
+                <div class="project-tags">
+                    <span class="tag">CNC</span>
+                    <span class="tag">Woodworking</span>
+                    <span class="tag">Shop Safety</span>
+                </div>
+                <p class="project-description">Custom wooden enclosure built in the MIX Metal Shop to contain dust and noise from the ProVerXL 3030-Max CNC, with acrylic windows for visibility during cuts.</p>
+                <div class="project-links">
+                    <button class="btn-small primary" onclick="event.stopPropagation(); openModal('project-cnc-enclosure')">Details <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></button>
+                    <a href="https://www.youtube.com/shorts/JkXcThfUuIg" target="_blank" class="btn-small secondary" onclick="event.stopPropagation()">YouTube <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z"/></svg></a>
+                </div>
+            </div>
+        </div>
 
         <div class="project-card" onclick="openModal('project1')">
             <div class="project-image"><img src="Images/ces-display.jpg" alt="GMU CES Booth Display"></div>
@@ -556,6 +579,39 @@
             </ul>
             <h3>Links</h3>
             <p><a href="https://github.com/tchau23/Green-Heart" target="_blank">github.com/tchau23/Green-Heart</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="project-cnc-enclosure">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('project-cnc-enclosure')">×</button>
+        <div class="modal-header"><h2>CNC Enclosure — Genmitsu ProVerXL 3030-Max</h2></div>
+        <div class="modal-body">
+            <h3>Overview</h3>
+            <p><strong>Role:</strong> Designer &amp; Builder &nbsp;·&nbsp; <strong>Location:</strong> MIX Metal Shop, GMU</p>
+            <p>A custom wooden enclosure built to house the MIX's Genmitsu ProVerXL 3030-Max CNC machine — containing chips and dust, cutting down machine noise, and improving shop safety and air quality for students using the machine.</p>
+            <h3>Specs</h3>
+            <ul>
+                <li>Interior dimensions: 24" × 24" × 19"</li>
+                <li>0.5" plywood panels with acrylic windows for visibility during cuts</li>
+            </ul>
+            <h3>Build Process</h3>
+            <p>A cross-shop effort spanning nearly every tool at the MIX:</p>
+            <ul>
+                <li>Panels cut on the wood CNC</li>
+                <li>Assembled with power and hand woodworking tools</li>
+                <li>Acrylic windows laser-cut</li>
+                <li>Handle and cable pass-through cover 3D-printed</li>
+                <li>LED strips added inside to light the work area</li>
+            </ul>
+            <h3>Gallery</h3>
+            <div class="modal-gallery">
+                <img src="Images/cnc-enclosure2.jpg" alt="Finished CNC enclosure mounted at the MIX">
+                <img src="Images/cnc-enclosure4.jpg" alt="Finished enclosure showing side acrylic windows">
+                <img src="Images/cnc-enclosure5.jpg" alt="Enclosure shell mid-build, before windows and finishing">
+                <img src="Images/cnc-enclosure6.jpg" alt="Finished enclosure with interior LED lighting">
+            </div>
         </div>
     </div>
 </div>
